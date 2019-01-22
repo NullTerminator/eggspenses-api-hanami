@@ -1,2 +1,4 @@
 /public/assets*
 /tmp
+/db/*.sqlite
+.env.production
