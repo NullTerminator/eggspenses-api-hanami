@@ -7,8 +7,13 @@ end
 
 class Product < Hanami::Entity
   attributes do
-    attribute :id,    Types::Int
-    attribute :name,  Types::String
-    attribute :asset, Types::Entity(Asset)
+    attribute :id,         Types::Int
+    attribute :created_at, Types::DateTime
+    attribute :updated_at, Types::DateTime
+
+    attribute :name,       Types::String
+
+    attribute :asset_id,   Types::Int
+    attribute :asset,      Types::Entity(Asset)
   end
 end
