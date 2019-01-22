@@ -1,4 +1,4 @@
-RSpec.describe Product, type: :entity do
+describe Product, type: :entity do
   subject { described_class.new(id: id, name: name) }
   let(:id) { 97 }
   let(:name) { 'foo' }

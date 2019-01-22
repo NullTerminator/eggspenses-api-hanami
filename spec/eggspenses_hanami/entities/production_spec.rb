@@ -1,4 +1,4 @@
-RSpec.describe Production, type: :entity do
+describe Production, type: :entity do
   subject { described_class.new(id: id, count: count, date: date) }
   let(:id) { 97 }
   let(:count) { 42 }
