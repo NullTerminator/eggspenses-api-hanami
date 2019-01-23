@@ -6,6 +6,7 @@ resources :assets
 resources :products
 resources :productions
 resources :asset_events
+resources :expenses
 
 cors_handler = ->(env) {
   [

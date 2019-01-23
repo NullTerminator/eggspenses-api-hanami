@@ -3,6 +3,10 @@ class AssetRepository < Hanami::Repository
     has_many :products
   end
 
+  def find_all(ids)
+    assets.where(id: ids).to_a
+  end
+
   def all_with_products
     aggregate(:products).map_to(Asset).to_a
   end
