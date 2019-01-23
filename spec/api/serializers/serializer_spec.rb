@@ -1,8 +1,8 @@
-Foo = Struct.new(:id, :name, :bar, :limbs, :feet, :ear)
+FizBang = Struct.new(:id, :name, :bar, :limbs, :feet, :ear)
 Bar = Struct.new(:id)
 Limb = Struct.new(:id)
 
-class FooSerizalizer < Api::Serializers::Serializer
+class FizBangSerizalizer < Api::Serializers::Serializer
   attributes :id, :name
   has_one :bar
   has_one :ear
@@ -11,8 +11,8 @@ class FooSerizalizer < Api::Serializers::Serializer
 end
 
 describe Api::Serializers::Serializer do
-  subject { FooSerizalizer.new(foo) }
-  let(:foo) { Foo.new id, name, bar, limbs, nil, nil }
+  subject { FizBangSerizalizer.new(foo) }
+  let(:foo) { FizBang.new id, name, bar, limbs, nil, nil }
   let(:id) { 42 }
   let(:name) { 'foo' }
 
@@ -27,7 +27,7 @@ describe Api::Serializers::Serializer do
   it 'serializes the record' do
     expected = {
       id: id,
-      type: 'foos',
+      type: 'fiz-bangs',
       attributes: {
         name: name
       },

@@ -32,7 +32,7 @@ module Api
       def to_h
         {
           id: @record.id,
-          type: Hanami::Utils::String.pluralize(@record.class.name.downcase),
+          type: Hanami::Utils::String.pluralize(Hanami::Utils::String.dasherize(@record.class.name)),
           attributes: map_attrs,
           relationships: map_relationships
         }
