@@ -2,11 +2,11 @@
 # See: http://hanamirb.org/guides/routing/overview/
 #
 
-resources :assets
-resources :products
-resources :productions
-resources :asset_events
-resources :expenses
+resources :assets, only: [:show, :index]
+resources :products, only: [:show, :index]
+resources :productions, only: [:index]
+resources :asset_events, only: [:index]
+resources :expenses, only: [:show, :index]
 resources :sale_items, only: [:show, :index]
 
 cors_handler = ->(env) {
