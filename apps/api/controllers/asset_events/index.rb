@@ -7,12 +7,12 @@ module Api
 
         expose :asset_events
 
-        def initialize(repo: AssetEventRepository.new)
-          @repo = repo
+        def initialize(interactor: LoadAssetEvents.new)
+          @interactor = interactor
         end
 
         def call(params)
-          @asset_events = @repo.all_with_assets
+          @asset_events = @interactor.call(params.to_h.select { |k, v| [:from_date, :to_date].include?(k) }).asset_events
         end
       end
     end

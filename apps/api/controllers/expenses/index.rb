@@ -7,12 +7,12 @@ module Api
 
         expose :expenses
 
-        def initialize(repo: ExpenseRepository.new)
-          @repo = repo
+        def initialize(interactor: LoadExpenses.new)
+          @interactor = interactor
         end
 
         def call(params)
-          @expenses = @repo.all_with_expensable
+          @expenses = @interactor.call(params.to_h.select { |k, v| [:from_date, :to_date].include?(k) }).expenses
         end
       end
     end
