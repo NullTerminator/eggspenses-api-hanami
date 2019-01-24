@@ -32,13 +32,17 @@ module Api
       def to_h
         {
           id: @record.id,
-          type: Hanami::Utils::String.pluralize(Hanami::Utils::String.dasherize(@record.class.name)),
+          type: class_name(@record),
           attributes: map_attrs,
           relationships: map_relationships
         }
       end
 
       private
+
+      def class_name(record)
+        Hanami::Utils::String.pluralize(Hanami::Utils::String.dasherize(record.class.name))
+      end
 
       def map_attrs
         attrs = {}
@@ -56,7 +60,7 @@ module Api
           data = {}
           if obj
             data[:id] = obj.id
-            data[:type] = Hanami::Utils::String.pluralize(obj.class.name.downcase)
+            data[:type] = class_name(obj)
           end
           relationships[rel] = { data: data }
         end
@@ -67,7 +71,7 @@ module Api
             data: objs.map do |obj|
               {
                 id: obj.id,
-                type: Hanami::Utils::String.pluralize(obj.class.name.downcase)
+                type: class_name(obj)
               }
             end
           }

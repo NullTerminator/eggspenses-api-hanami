@@ -7,6 +7,7 @@ resources :products
 resources :productions
 resources :asset_events
 resources :expenses
+resources :sale_items, only: [:show, :index]
 
 cors_handler = ->(env) {
   [
