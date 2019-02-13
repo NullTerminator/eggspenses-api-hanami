@@ -4,7 +4,7 @@
 
 resources :assets, only: [:show, :index]
 resources :products, only: [:show, :index]
-resources :productions, only: [:index]
+resources :productions, only: [:index, :create]
 resources :asset_events, only: [:index]
 resources :expenses, only: [:show, :index]
 resources :sale_items, only: [:show, :index]

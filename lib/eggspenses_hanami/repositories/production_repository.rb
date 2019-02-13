@@ -3,6 +3,10 @@ class ProductionRepository < Hanami::Repository
     belongs_to :product
   end
 
+  def find_with_products(id)
+    aggregate(:product).where(id: id).map_to(Production).one
+  end
+
   def all_with_products
     aggregate(:product).map_to(Production).to_a
   end
